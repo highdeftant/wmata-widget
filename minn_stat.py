@@ -64,9 +64,9 @@ def getminnstat(): # Pulls current info for 'OR' line Minnesota Ave Station
 # ----Frontend Elements----
 
 class Frontend(QtWidgets.QWidget):
-    code = getStatCode(sys.argv[1])
-    
+
     def __init__(self):
+        code = getStatCode(sys.argv[1])
         super().__init__()
         self.button = QtWidgets.QPushButton("Update Times")
         self.text = QtWidgets.QLabel(printTime(code),
@@ -80,14 +80,13 @@ class Frontend(QtWidgets.QWidget):
 
     @QtCore.Slot()
     def trainTime(self):
+        code = getStatCode(sys.argv[1])
         self.text.setText(printTime(code))
-        updated_text = printTime(code)
-        self.trainSignal.emit(updated_text)
      
 if __name__ == "__main__":
     app = QtWidgets.QApplication()
     widget = Frontend()
-    widget.resize(800, 600)
+    widget.resize(200, 150)
     widget.show()
     sys.exit(app.exec())
 
