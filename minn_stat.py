@@ -3,7 +3,7 @@
 import requests
 import sys
 import configparser 
-from PySide6 import QtCore, QtWidgets, QtGui
+from PySide6 import QtCore, QtWidgets, QtGui, QtHelp
 
 # ---- API URL's, Links to files -----
 
@@ -56,26 +56,45 @@ def getminnstat(): # Pulls current info for 'OR' line Minnesota Ave Station
     first_trn = minn_sta['Trains'][0] #type <dict>
     sec_trn = minn_sta['Trains'][1]
     thrd_trn = minn_sta['Trains'][2]
-    return ("Dest" + " " + "Min" + \
-            first_trn['Destination'] + ' ' + first_trn['Min'] + \
-            sec_trn['Destination'] + ' ' + sec_trn['Min'] + \
-            thrd_trn['Destination'] + ' ' + thrd_trn['Min'])
+    print("Dest" + " " + "Min")
+    print(first_trn['Destination'] + ' ' + first_trn['Min'])
+    print(sec_trn['Destination'] + ' ' + sec_trn['Min'])
+    return thrd_trn['Destination'] + ' ' + thrd_trn['Min']
 
 # ----Frontend Elements----
 
-class Frontend(QtWidgets.QWidget):
+#class Frontend(QtWidgets.QWidget):
 
     def __init__(self):
         code = getStatCode(sys.argv[1])
         super().__init__()
+
+        # Window
+        self.setWindowTitle("WMATA Trains")
         self.button = QtWidgets.QPushButton("Update Times")
         self.text = QtWidgets.QLabel(printTime(code),
                                     alignment=QtCore.Qt.AlignCenter)
+
         
+        self.searchbar = QtHelp.QHelpSearchQueryWidget() 
+#        self.enginecore = QtHelp.QHelpEngineCore()
+#        self.searchengine = QtHelp.QHelpSearchEngine()
         self.layout = QtWidgets.QVBoxLayout(self)
+
+
+        
+
+        self.layout.addWidget(self.searchbar)
+        #self.layout.addWidget(QtHelp.QHelpSearchResult())
         self.layout.addWidget(self.text)
         self.layout.addWidget(self.button)
         self.button.clicked.connect(self.trainTime)
+
+
+    @QtCore.Slot()
+    def something(self):
+        pass
+
         
 
     @QtCore.Slot()
@@ -83,7 +102,9 @@ class Frontend(QtWidgets.QWidget):
         code = getStatCode(sys.argv[1])
         self.text.setText(printTime(code))
      
-if __name__ == "__main__":
+
+
+#if __name__ == "__main__":
     app = QtWidgets.QApplication()
     widget = Frontend()
     widget.resize(200, 150)
@@ -91,11 +112,11 @@ if __name__ == "__main__":
     sys.exit(app.exec())
 
 
-#if len(sys.argv) > 1:
-#    code = getStatCode(sys.argv[1])
-#    print(printTime(code))
-#else:
-#    print(getminnstat())
+if len(sys.argv) > 1:
+    code = getStatCode(sys.argv[1])
+    print(printTime(code))
+else:
+    print(getminnstat())
 
 
 #print(trnInfo)
