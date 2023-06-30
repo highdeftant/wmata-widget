@@ -57,11 +57,3 @@ if __name__ == "__main__":
     widget.resize(230, 125)
     widget.show()
     sys.exit(app.exec())
-
-#if len(sys.argv) > 1:
-#    code = getStatCode(sys.argv[1])
-#    print(printTime(code))
-#else:
-#    print(getminnstat())
-
-#print(t1rnInfo)
