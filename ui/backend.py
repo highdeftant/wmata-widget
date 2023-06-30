@@ -41,7 +41,18 @@ def getStatCode(stationName):
             break
     return stationcode[0]
 
-def printTime(stationcode):
+def trainNames():
+    statname = trnInfo['Trains']
+    stations = [train['LocationName'] for train in statname]
+    with open('train_name_list.txt', 'w') as statnames:
+        for i in stations:
+            statnames.write(i)
+            statnames.write('\n')
+    #for train in statname:
+     #   stations.append(train.get('LocationName'))
+    return 
+
+def printTime(stationcode=''):
     fill_url = empt_url.format(stationcode)
     statPull = requests.get(fill_url, headers)
     pulltime = statPull.json()
@@ -60,4 +71,4 @@ def getminnstat(): # Pulls current info for 'OR' line Minnesota Ave Station
             sec_trn['Destination'] + ' ' + sec_trn['Min'] + '\n' +
             thrd_trn['Destination'] + ' ' + thrd_trn['Min'])
 
-
+trainNames()
