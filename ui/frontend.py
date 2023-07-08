@@ -9,7 +9,6 @@ from PySide6 import QtCore, QtWidgets, QtGui, QtHelp
 class Frontend(QtWidgets.QWidget):
 
     def __init__(self):
-        #code = backend.getStatCode(sys.argv[1])
         super().__init__()
 
         # Window
@@ -21,7 +20,7 @@ class Frontend(QtWidgets.QWidget):
 
     # ----Search Engine----        
 
-        self.enginecore = QtHelp.QHelpEngineCore('train_name_list.txt')
+        self.enginecore = QtHelp.QHelpEngineCore('../train_name_list.txt')
         self.searchengine = QtHelp.QHelpSearchEngine(self.enginecore)
         self.searchbar = QtHelp.QHelpSearchQueryWidget(self) 
         self.results = QtHelp.QHelpSearchResultWidget(self)
@@ -37,6 +36,7 @@ class Frontend(QtWidgets.QWidget):
 
         self.button.clicked.connect(self.trainTime)
         self.searchbar.search.connect(self.search)
+        self.searchbar.search.connect(self.trainTime)
 
     @QtCore.Slot()
     def search(self):
@@ -54,6 +54,7 @@ class Frontend(QtWidgets.QWidget):
 if __name__ == "__main__":
     app = QtWidgets.QApplication()
     widget = Frontend()
-    widget.resize(230, 125)
+    widget.resize(300, 180)
     widget.show()
     sys.exit(app.exec())
+
