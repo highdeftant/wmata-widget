@@ -16,5 +16,4 @@ Status: Works, not as expected (to me), still happy with the result. you can sea
 
 # ---- Screenshots ----
 
-[IMAGE]
-(/docs/screenshots/wmatascreens_largo.png)
+[IMAGE](/docs/screenshots/wmatascreens_largo.png)
