@@ -14,7 +14,7 @@ Features being implemented:
 Status: Works, not as expected (to me), still happy with the result. you can search the names of the train stations in the search bar, though they have to be exact.
 
 
-#---- Screenshots ----
+# ---- Screenshots ----
 
 ![IMAGE]
-(docs/screenshots/wmatascreens_largo.png)
+(/docs/screenshots/wmatascreens_largo.png)
