@@ -16,6 +16,6 @@ Status: Works, not as expected (to me), still happy with the result. you can sea
 
 # ---- Screenshots ----
 
-[IMAGE](/docs/screenshots/Screen1.png)
-[IMAGE](/docs/screenshots/Screen2.png)
-[IMAGE](/docs/screenshots/Screen3.png)
+[IMAGE](screenshots/Screen1.png)
+[IMAGE](screenshots/Screen2.png)
+[IMAGE](screenshots/Screen3.png)
