@@ -1,20 +1,18 @@
-# wmata-widget
-Widget for KDE Plasma that displays train times for selected station (WIP)
-
-
 # What is this?
 A simple widget for KDE-Plasma that makes a direct API call to the WMATA servers and pulls the next few trains coming for that station.
 
-Features being implemented:
-    - Built in Search engine for train stations - This has been implemented and works
-    - list-like information vs in one single line - This has also been completed and works
-    - Colored icons for train lines - WIP
+### Features Being Implemented
+
+ - ~~Built in Search engine for train stations~~
+ - ~~List-like information vs in one single line~~
+ - Colored icons for train lines - WIP
+
+> Status - It works, just not as expected
+
+you can search the names of the train stations in the search bar, though they have to be exact.
 
 
-Status: Works, not as expected (to me), still happy with the result. you can search the names of the train stations in the search bar, though they have to be exact.
-
-
-# ---- Screenshots ----
+## ---- Screenshots ----
 
 ![IMAGE](screenshots/Screen1.png)
 ![IMAGE](screenshots/Screen2.png)
