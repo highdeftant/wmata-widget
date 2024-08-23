@@ -15,7 +15,7 @@ class Frontend(QtWidgets.QWidget):
 
         self.setWindowTitle("WMATA Trains")
         self.button = QtWidgets.QPushButton("Update Times")
-        self.text = QtWidgets.QLabel("Text to be updated",
+        self.text = QtWidgets.QLabel("Search Train Station",
                                     alignment=QtCore.Qt.AlignCenter)
 
     # ----  Search Engine   ----        

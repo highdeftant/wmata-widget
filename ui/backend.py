@@ -1,6 +1,6 @@
 #!/bin/env python3
 
-import requests, sys, configparser
+import requests, sys, configparser, os
 from PySide6 import QtCore, QtWidgets, QtGui, QtHelp
 
 # ----  API URL's, Links to files    -----
@@ -17,6 +17,9 @@ wmatapi = config.get('API', 'key')
 headers = {'api_key': wmatapi,}
 getTrns = requests.get(alltrn_url, headers)
 trnInfo = getTrns.json()
+
+#def checkNet():
+#    if getTrns == 
 
 # Pulls the next 1-4 trains departing from the station
 def nextThree(trainfile):
@@ -40,34 +43,44 @@ def getStatCode(stationName):
             break
     return stationcode[0]
 
-
 # Grabs every station name and writes it to a file for use on the frontend search engine
 # todo: currently grabs multiple names of the same station when you only need one
 def trainNames():
     statname = trnInfo['Trains']
     stations = [train['LocationName'] for train in statname]
-    with open('train_name_list.txt', 'w') as statnames:
-        stationlist = []
-        for name in stations:
-            if name not in stationlist:
-                statnames.write(name)
-                statnames.write('\n')
-                stationlist.append(name)
+
+    if getTrns.status_code != 200:
+        if os.path.exists('train_name_list.txt'):
+            with open('train_name_list.txt', 'r') as statnames:
+                statnames.read().splitlines()
+        else:
+            with open('train_name_list.txt', 'w') as statnames:
+                stationlist = []
+                for name in stations:
+                    if name not in stationlist:
+                        statnames.write(name)
+                        statnames.write('\n')
+                        stationlist.append(name)
     return
 
-# Can't really explain what this does cause I can't remember lol
+# Takes the empty URL and
 def printTime(stationcode=''):
     fill_url = empt_url.format(stationcode)
     statPull = requests.get(fill_url, headers)
     pulltime = statPull.json()
     return nextThree(pulltime)
 
+#def status_check():
+#    status = getTrns.status_code
+#    if status != 200:
+#        with open('train_name_list.txt', 'r')1
+#    return status
+
 # Want this to show station info per station code in the parameter
 def showTrns():
     pass
 
-
 #print(trnInfo)
-#lineup()
+
 if __name__ == "__main__":
     trainNames()
