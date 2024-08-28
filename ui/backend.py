@@ -28,7 +28,7 @@ def nextThree(trainfile):
                             <tr>
                                 <th><b>Line</b></th>
                                 <th><b>Dest</b></th>
-                                <th><b>Min</th>
+                                <th><b>Min</b></th>
                             </tr>\n'''
 
         for train in trainfile['Trains'][:4]:
@@ -38,12 +38,13 @@ def nextThree(trainfile):
                             <td>{}</td>
                             <td>{}</td>
                             <td>{}</td>
-                        </tr>
-                    </table>
-                    </body>
-                </html>'''.format(train['Line'],
-                                  train['Destination'],
-                                  train['Min'])
+                        </tr>'''.format(train['Line'],
+                                        train['Destination'],
+                                        train['Min'])
+    result += '''</table>
+                </body>
+                </html>'''
+
     return result
 
 # This function grabs the station code from the station name used in the parameter
