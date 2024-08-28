@@ -1,7 +1,7 @@
 #!/bin/env python3
 
 import requests, sys, configparser
-from nextThree import nextThree as nextThree
+from nextTrain import nextThree as nextTrain
 from PySide6 import QtCore, QtWidgets, QtGui, QtHelp
 
 # ----  API URL's, Links to files    -----
@@ -18,8 +18,6 @@ wmatapi = config.get('API', 'key')
 headers = {'api_key': wmatapi,}
 getTrns = requests.get(alltrn_url, headers)
 trnInfo = getTrns.json()
-
-# Pulls the next 1-4 trains departing from the station
 
 # This function grabs the station code from the station name used in the parameter
 # todo: use either regex or standard string methods to match incorrect names for ease of use
@@ -58,7 +56,7 @@ def printTime(stationcode=''):
     fill_url = empt_url.format(stationcode)
     statPull = requests.get(fill_url, headers)
     pulltime = statPull.json()
-    return nextThree(pulltime)
+    return nextTrain(pulltime)
 
 # Want this to show station info per station code in the parameter
 def showTrns():

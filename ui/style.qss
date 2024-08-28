@@ -1,11 +1,12 @@
 QWidget {
-	background-color: #2c2e3d
+	background-color: #2c2e3d;
 }
 QPushButton {
-	background-color: #1e6909 
+	background-color: #1e6909;
 }
 
 QLabel {
-font-size: 15px
+font-size: 20px;
+font-family: Open Sans;
 }
 
