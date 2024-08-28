@@ -15,8 +15,8 @@ class Frontend(QtWidgets.QWidget):
 
         self.setWindowTitle("WMATA Trains")
         self.button = QtWidgets.QPushButton("Update Times")
-        self.text = QtWidgets.QLabel("Search Train Station",
-                                    alignment=QtCore.Qt.AlignCenter)
+        self.text = QtWidgets.QLabel(htmlfile,
+                                     alignment=QtCore.Qt.AlignCenter)
 
     # ----  Search Engine   ----        
 # Functions/Attributes for search engine
@@ -54,12 +54,17 @@ class Frontend(QtWidgets.QWidget):
     @QtCore.Slot()
     def trainTime(self):
         code = backend.getStatCode(self.searchengine.searchInput())
-        self.text.setText(backend.printTime(code))
+        #self.text.setText(backend.printTime(code))
+        self.text.setText(str(backend.printTime(code)))
+
 
 
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication()
+
+    with open('ui/label.html', 'r') as f:
+            htmlfile = f.read()
 
     with open("ui/style.qss", "r") as f:
         _style = f.read()
