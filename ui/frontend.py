@@ -11,7 +11,7 @@ class Frontend(QtWidgets.QWidget):
         super().__init__()
 
     # ----  Window  ----
-# These elements build the GUI Window
+    # These elements build the GUI Window
 
         self.setWindowTitle("WMATA Trains")
         self.button = QtWidgets.QPushButton("Update Times")
@@ -19,7 +19,7 @@ class Frontend(QtWidgets.QWidget):
                                      alignment=QtCore.Qt.AlignCenter)
 
     # ----  Search Engine   ----        
-# Functions/Attributes for search engine
+    # Functions/Attributes for search engine
 
         self.enginecore = QtHelp.QHelpEngineCore('../train_name_list.txt')
         self.searchengine = QtHelp.QHelpSearchEngine(self.enginecore)
@@ -29,12 +29,12 @@ class Frontend(QtWidgets.QWidget):
         self.data = self.enginecore.setupData()
 
     # ----  Layout   ----
-# Sets the layout for the windows
+    # Sets the layout for the windows
 
         self.layout.addWidget(self.searchbar)
         self.layout.addWidget(self.results)
         self.layout.addWidget(self.text)
-    #    self.layout.addWidget(self.button)
+    #   self.layout.addWidget(self.button)
 
     # ----  Button Functions    ----
 
@@ -54,10 +54,7 @@ class Frontend(QtWidgets.QWidget):
     @QtCore.Slot()
     def trainTime(self):
         code = backend.getStatCode(self.searchengine.searchInput())
-        #self.text.setText(backend.printTime(code))
         self.text.setText(str(backend.printTime(code)))
-
-
 
 
 if __name__ == "__main__":

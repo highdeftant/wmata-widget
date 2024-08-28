@@ -1,6 +1,7 @@
 #!/bin/env python3
 
-import requests, sys, configparser, os
+import requests, sys, configparser
+from nextThree import nextThree as nextThree
 from PySide6 import QtCore, QtWidgets, QtGui, QtHelp
 
 # ----  API URL's, Links to files    -----
@@ -19,33 +20,6 @@ getTrns = requests.get(alltrn_url, headers)
 trnInfo = getTrns.json()
 
 # Pulls the next 1-4 trains departing from the station
-def nextThree(trainfile):
-    if 'Trains' in trainfile:
-        result = '''
-                    <html>
-                        <body>
-                            <table>
-                            <tr>
-                                <th><b>Line</b></th>
-                                <th><b>Dest</b></th>
-                                <th><b>Min</b></th>
-                            </tr>\n'''
-
-        for train in trainfile['Trains'][:4]:
-            if 'Line' in train and 'Destination' in train and 'Min' in train:
-                result += '''
-                        <tr>
-                            <td>{}</td>
-                            <td>{}</td>
-                            <td>{}</td>
-                        </tr>'''.format(train['Line'],
-                                        train['Destination'],
-                                        train['Min'])
-    result += '''</table>
-                </body>
-                </html>'''
-
-    return result
 
 # This function grabs the station code from the station name used in the parameter
 # todo: use either regex or standard string methods to match incorrect names for ease of use
