@@ -24,7 +24,7 @@ class Frontend(QtWidgets.QWidget):
         self.enginecore = QtHelp.QHelpEngineCore('../train_name_list.txt')
         self.searchengine = QtHelp.QHelpSearchEngine(self.enginecore)
         self.searchbar = QtHelp.QHelpSearchQueryWidget(self)
-        self.results = QtHelp.QHelpSearchResultWidget(self)
+       # self.results = QtHelp.QHelpSearchResultWidget(self.searchbar)
         self.layout = QtWidgets.QVBoxLayout(self)
         self.data = self.enginecore.setupData()
 
@@ -32,7 +32,7 @@ class Frontend(QtWidgets.QWidget):
     # Sets the layout for the windows
 
         self.layout.addWidget(self.searchbar)
-        self.layout.addWidget(self.results)
+       # self.layout.addWidget(self.results)
         self.layout.addWidget(self.text)
     #   self.layout.addWidget(self.button)
 
